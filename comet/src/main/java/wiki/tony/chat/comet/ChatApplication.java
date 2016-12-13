@@ -16,6 +16,7 @@ import javax.annotation.Resource;
  */
 @SpringBootApplication
 @ComponentScan("wiki.tony.chat")
+//实现CommandLineRunner接口的好处就是在服务启动之后率调用run方法里面的内容
 public class ChatApplication implements CommandLineRunner {
 
     private static Logger LOG = LoggerFactory.getLogger(ChatApplication.class);

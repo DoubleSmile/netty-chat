@@ -44,6 +44,7 @@ public class ChatClient {
             AuthToken auth = new AuthToken();
             auth.setUserId(2);
             auth.setToken("test2");
+            //Proto作为最外层的一层包装,包装这些信息类,包括AuthToken和Message
             Proto proto = new Proto();
             proto.setVersion((short) 1);
             proto.setOperation(0);

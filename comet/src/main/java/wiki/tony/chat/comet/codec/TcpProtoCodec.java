@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * tcp codec
  * <p>
+ * 这里采用MessageToMessageCodec编解码器的好处就是不用担心中间byte类型的数据,
+ * 但是因为这样绑定死了所以灵活性有一定丧失,不过作为例子学习还是允许的.
  * Created by Tony on 4/14/16.
  */
 @Component
@@ -54,6 +56,7 @@ public class TcpProtoCodec extends MessageToMessageCodec<ByteBuf, Proto> {
         proto.setVersion(byteBuf.readShort());
         proto.setOperation(byteBuf.readInt());
         proto.setSeqId(byteBuf.readInt());
+        //说明协议是有内容的
         if (proto.getPacketLen() > proto.getHeaderLen()) {
             byte[] bytes = new byte[proto.getPacketLen() - proto.getHeaderLen()];
             byteBuf.readBytes(bytes);

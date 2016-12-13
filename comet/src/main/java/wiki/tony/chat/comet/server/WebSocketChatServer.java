@@ -45,6 +45,7 @@ public class WebSocketChatServer implements ChatServer {
 
             channelFuture = b.bind(port).sync();
         } finally {
+            //jvm强制退出时候也要进行一定的关闭操作防止资源占用
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 @Override
                 public void run() {
@@ -62,6 +63,7 @@ public class WebSocketChatServer implements ChatServer {
 
     @Override
     public void shutdown() {
+        //如果channelFuture为空的话代表就根本没有启动ChatServer
         if (channelFuture != null) {
             channelFuture.channel().close().syncUninterruptibly();
         }

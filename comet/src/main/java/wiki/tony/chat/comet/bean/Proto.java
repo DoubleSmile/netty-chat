@@ -1,20 +1,20 @@
 package wiki.tony.chat.comet.bean;
 
 /**
- * 协议
+ * 协议(Protocol)
  * <p>
  * Created by Tony on 4/13/16.
  */
 public class Proto {
 
-    public static final short HEADER_LENGTH = 16;
-    public static final short VERSION = 1;
+    public static final short HEADER_LENGTH = 16; //固定的头部长度
+    public static final short VERSION = 1; //固定版本号
 
     private int packetLen;
     private short headerLen;
     private short version;
     private int operation;
-    private int seqId;
+    private int seqId; //类似与做一个TCP中的seqId
     private byte[] body;
 
     public int getPacketLen() {

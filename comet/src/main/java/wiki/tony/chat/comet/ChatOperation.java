@@ -22,6 +22,7 @@ public class ChatOperation {
 
     @Bean(name = "operations")
     public Map<Integer, Operation> operations() {
+        //得到所有的Operation然后使用map缓存起来
         Map<String, Operation> beans = applicationContext.getBeansOfType(Operation.class);
         for (Operation op : beans.values()) {
             ops.put(op.op(), op);
